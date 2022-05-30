@@ -1,0 +1,29 @@
+.gallery {
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    @include mq(tablet) {
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
+
+.gallery__item {
+    @include mq(mobile-only) {
+        &:not(:last-child) {
+                margin-bottom: 30px;
+            }
+    }
+
+    @include mq(tablet) {
+        flex-basis: calc((100% - 30px) / 2);
+
+        &:not(:nth-last-child(-n+2)) {
+            margin-bottom: 30px;
+        }
+
+        &:nth-child(odd) {
+            margin-right: 30px;
+        }
+    }
+}

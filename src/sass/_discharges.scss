@@ -1,0 +1,40 @@
+a {
+    text-decoration: none;
+    outline: none;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+h1,
+h2,
+h3,
+p {
+    margin: 0;
+}
+
+input {
+    padding: 0;
+    outline: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+button {
+    cursor: pointer;
+}
+
+body {
+    overflow-y: scroll;
+    // background-color: var(--bgc-main);
+    // color: var(--text-main-color);
+
+    // font-family: DM Sans, sans-serif;
+}
