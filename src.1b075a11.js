@@ -80,7 +80,7 @@ module.exports={version:"0.27.2"};
 },{"./utils":"S1cf","./helpers/bind":"EDTP","./core/Axios":"OvAf","./core/mergeConfig":"OHvn","./defaults":"VQpg","./cancel/CanceledError":"E1lI","./cancel/CancelToken":"tsWd","./cancel/isCancel":"V30M","./env/data":"xNqU","./helpers/toFormData":"BFle","../lib/core/AxiosError":"rRKx","./helpers/spread":"X8jb","./helpers/isAxiosError":"wICU"}],"dZBD":[function(require,module,exports) {
 module.exports=require("./lib/axios");
 },{"./lib/axios":"nUiQ"}],"nIiJ":[function(require,module,exports) {
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.fetch=c;var e=t(require("axios"));function t(e){return e&&e.__esModule?e:{default:e}}const r="bfe20768c956c05046c7d088e4b361cd",a="https://api.themoviedb.org/3/search/movie/";async function c(t){return await e.default.get(`${a}?api_key=${r}&query=${t}&page=1`)}
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.fetch=c;var e=t(require("axios"));function t(e){return e&&e.__esModule?e:{default:e}}const r="bfe20768c956c05046c7d088e4b361cd",a="https://api.themoviedb.org/3/search/movie";async function c(t){return await e.default.get(`${a}?api_key=${r}&query=${t}&page=1`)}
 },{"axios":"dZBD"}],"pAws":[function(require,module,exports) {
 var define;
 var global = arguments[3];
@@ -90,4 +90,4 @@ var e,t=arguments[3];!function(t,r){"object"==typeof exports&&"object"==typeof m
 },{"handlebars/dist/handlebars.runtime":"pAws"}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss");var e=require("./js/film-api.js"),t=r(require("./templates/gallery.hbs"));function r(e){return e&&e.__esModule?e:{default:e}}const n={form:document.querySelector(".search"),gallery:document.querySelector(".gallery")};async function a(t){t.preventDefault();let r=t.currentTarget.elements.query.value.trim();if(!r)return;const{data:{results:n}}=await(0,e.fetch)(r);u(),s(n),t.target.reset()}function s(e){n.gallery.insertAdjacentHTML("beforeend",(0,t.default)(e))}function u(){n.gallery.innerHTML=""}n.form.addEventListener("submit",a),document.addEventListener("DOMContentLoaded",async()=>{const{data:{results:t}}=await(0,e.fetch)("iron man");s(t)});
 },{"./sass/main.scss":"clu1","./js/film-api.js":"nIiJ","./templates/gallery.hbs":"YMFI"}]},{},["Focm"], null)
-//# sourceMappingURL=/film-library/src.b726dbbd.js.map
+//# sourceMappingURL=/film-library/src.1b075a11.js.map
