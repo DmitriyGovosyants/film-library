@@ -11,15 +11,22 @@ refs.form.addEventListener('submit', onSearch);
 
 async function onSearch(e) {
     e.preventDefault();
-    
     let search = e.currentTarget.elements.query.value.trim();
-    console.log(search); //delete after
+    if (!search) {
+        return;
+    }
+    
     const { data: {results} } = await fetch(search);
     clearMarkup();
     render(results);
 
     e.target.reset();
 }
+
+document.addEventListener('DOMContentLoaded', async () => {
+    const { data: {results} } = await fetch('iron man');
+    render(results);
+})
 
 function render(results) {
     refs.gallery.insertAdjacentHTML('beforeend', galleryMarkup(results));

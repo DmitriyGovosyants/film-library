@@ -6,5 +6,11 @@
 
     @include mq(tablet) {
         width: 720px;
+        padding-left: 75px;
+        padding-right: 75px;
+    }
+
+    @include mq(desktop) {
+        width: 1000px;
     }
 }
