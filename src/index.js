@@ -18,13 +18,15 @@ async function onSearch(e) {
     
     const { data: {results} } = await fetch(search);
     clearMarkup();
+    transformDate(results);
     render(results);
 
     e.target.reset();
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
-    const { data: {results} } = await fetch('iron man');
+    const { data: { results } } = await fetch('iron man');
+    transformDate(results);
     render(results);
 })
 
@@ -36,3 +38,12 @@ function clearMarkup() {
     refs.gallery.innerHTML = '';
 }
 
+function transformDate(data) {
+  data.map(item => {
+    if (item.release_date) {
+      item.release_date = item.release_date.slice(0, 4);
+      }
+      
+    return item;
+  });
+}
