@@ -1,5 +1,15 @@
 {{#each this}}
 <li class="gallery__item">
-    <img class="gallery__img" src="https://image.tmdb.org/t/p/w500/{{poster_path}}" loading="lazy">
+    <div class="gallery__thumb">
+        {{#if poster_path}}
+        <img class="gallery__img" src="https://image.tmdb.org/t/p/w500/{{poster_path}}" loading="lazy">
+        {{else}}
+        <img class="gallery__img" src="https://i.pinimg.com/originals/74/3d/b2/743db230d891b47c1d8c66b161111b91.jpg" loading="lazy">
+        {{/if}}
+    </div>
+    <div class="gallery__content">
+        <h2>{{title}}</h2>
+        <p>{{release_date}}</p>
+    </div>
 </li>
 {{/each}}

@@ -9,8 +9,8 @@
 }
 
 .gallery__item {
-    height: 400px;
-    overflow: hidden;
+    
+    // overflow: hidden;
 
     @include mq(mobile-only) {
         &:not(:last-child) {
@@ -43,6 +43,26 @@
             margin-right: 30px;
         }
     }
+}
+
+.gallery__thumb {
+    margin-bottom: 10px;
+    height: 400px;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: transform 250ms ease-in, box-shadow 250ms ease-in;
+    cursor: pointer;
+   
+
+    &:hover,
+    &:focus {
+        transform: scale(1.03);
+        box-shadow: 3px 3px 8px gray;
+    }
+}
+
+.gallery__content {
+
 }
 
 .gallery__img {
