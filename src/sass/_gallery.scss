@@ -1,12 +1,13 @@
 .gallery {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     padding-top: 20px;
     padding-bottom: 20px;
 
     @include mq(tablet) {
         display: flex;
-        flex-wrap: wrap;
+        
     }
 }
 
@@ -62,6 +63,12 @@
     }
 }
 
+.gallery__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 .gallery__date {
     position: absolute;
     bottom: 10px;
@@ -108,14 +115,22 @@
     text-transform: uppercase;
     color: rgb(48, 57, 109);
 }
-// .gallery__content {}
+.gallery__content {
+    padding: 5px;
+}
+
+.gallery__thumb:hover ~ .gallery__content {
+    background-color: rgba(91, 180, 207, 0.205);
+    border-radius: 5px;
+}
 
 .gallery__title {
     font-size: 16px;
+    margin-bottom: 5px;
 }
 
-.gallery__img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.gallery__genre {
+    font-size: 12px;
+    font-weight: 600;
+    color: tomato;
 }

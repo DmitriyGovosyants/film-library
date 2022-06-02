@@ -8,7 +8,7 @@ const SEARCH_PATH = '/search/movie';
 
 
 async function getPopularFilm() {
-    return await axios.get(`${BASE_URL}${START_PATH}?api_key=${API_KEY}&page=1`);
+    return await axios.get(`${BASE_URL}${START_PATH}?api_key=${API_KEY}`);
 }
 
 async function updateFilmGenre() {
