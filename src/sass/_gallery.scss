@@ -117,6 +117,7 @@
 }
 .gallery__content {
     padding: 5px;
+    transition: background-color 250ms ease-in;
 }
 
 .gallery__thumb:hover ~ .gallery__content {
