@@ -1,18 +1,25 @@
 import './sass/main.scss';
-import { getFilmByName, getPopularFilm, updateFilmGenre } from './js/film-api.js';
+import {FilmsAPI} from './js/film-api';
 import galleryMarkup from './templates/gallery.hbs';
 
+const filmsAPI = new FilmsAPI();
 const refs = {
   form: document.querySelector('.search'),
   gallery: document.querySelector('.gallery'),
+  pagPrevBtn: document.querySelector('.pagination__prev-btn'),
+  pagNextBtn: document.querySelector('.pagination__next-btn'),
+  startPage: document.querySelector('.header'),
 }
 
 document.addEventListener('DOMContentLoaded', onSiteLoad);
 refs.form.addEventListener('submit', onFilmSearch);
+refs.pagPrevBtn.addEventListener('click', onPrevPage);
+refs.pagNextBtn.addEventListener('click', onNextPage);
+
 
 async function onSiteLoad() {
-  const { data: { results } } = await getPopularFilm();
-  const { data: { genres } } = await updateFilmGenre();
+  const { data: { results } } = await filmsAPI.getPopularFilm();
+  const { data: { genres } } = await filmsAPI.updateFilmGenre();
   transformDate(results);
   transformGenre(results, genres);
   render(results);
@@ -24,15 +31,43 @@ async function onFilmSearch(e) {
   if (!search) {
       return;
   }
-  
-  const { data: { results } } = await getFilmByName(search);
-  const { data: { genres } } = await updateFilmGenre();
+
+  filmsAPI.search = search;
+  filmsAPI.page = 1;
+  const { data: { results } } = await filmsAPI.getFilmByName();
+  const { data: { genres } } = await filmsAPI.updateFilmGenre();
   clearMarkup();
   transformDate(results);
   transformGenre(results, genres);
   render(results);
-
+  filmsAPI.incrementPage();
   e.target.reset();
+}
+
+async function onPrevPage() {
+  if (filmsAPI.page <= 1) {
+    return
+  }
+  smoothScroll();
+  filmsAPI.decrementPage();
+  const { data: { results } } = await filmsAPI.getFilmByName();
+  const { data: { genres } } = await filmsAPI.updateFilmGenre();
+  clearMarkup();
+  transformDate(results);
+  transformGenre(results, genres);
+  render(results);
+}
+
+
+async function onNextPage() {
+  smoothScroll();
+  filmsAPI.incrementPage();
+  const { data: { results } } = await filmsAPI.getFilmByName();
+  const { data: { genres } } = await filmsAPI.updateFilmGenre();
+  clearMarkup();
+  transformDate(results);
+  transformGenre(results, genres);
+  render(results);
 }
 
 function render(data) {
@@ -72,4 +107,11 @@ function transformGenre(data, genres) {
 
     return item;
   });
+}
+
+function smoothScroll() {
+    refs.startPage.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    })
 }
